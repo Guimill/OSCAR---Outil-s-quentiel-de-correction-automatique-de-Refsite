@@ -1,0 +1,198 @@
+{
+  "Name": "Refsites_modif",
+  "CreationDate": "2024-4-24",
+  "Commands": [
+    {
+      "Command": "store",
+      "Target": "true",
+      "Value": "!errorignore",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "0",
+      "Value": "cpt",
+      "Description": "Inititalise le compteur à 0"
+    },
+    {
+      "Command": "csvReadArray",
+      "Target": "input.csv",
+      "Value": "Liste_IMB",
+      "Description": "Colonne 0 = code IMB; Colonne 1 = infra new; Colonne 2 = infra old"
+    },
+    {
+      "Command": "csvRead",
+      "Target": "input.csv",
+      "Value": "Liste_IMB",
+      "Description": "Read current row"
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return parseInt(${Liste_IMB.length});",
+      "Value": "total",
+      "Description": "Additionner 1 au nombre total des lignes"
+    },
+    {
+      "Command": "forEach",
+      "Target": "Liste_IMB",
+      "Value": "row",
+      "Description": "Itérer sur chaque ligne du CSV"
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return parseInt(${cpt}) + 1;",
+      "Value": "cpt",
+      "Description": "Incrémente le compteur en tant que nombre"
+    },
+    {
+      "Command": "gotoIf_v2",
+      "Target": "${cpt} == ${total}",
+      "Value": "final",
+      "Description": "Sauter à la fin si le compteur atteint le total"
+    },
+    {
+      "Command": "open",
+      "Target": "https://refsites.sso.francetelecom.fr/refsites/app/index.html#/",
+      "Value": "",
+      "Description": "Open the webpage"
+    },
+    {
+      "Command": "type",
+      "Target": "id=searchInputText",
+      "Value": "${row[0]}",
+      "Description": "Type the value from the first column of the current row"
+    },
+    {
+      "Command": "click",
+      "Target": "css=#search-button > .specialTextP",
+      "Value": "",
+      "Description": "Click on search button"
+    },
+    {
+      "Command": "pause",
+      "Target": "1000",
+      "Value": "",
+      "Description": "Pause for 1 seconds to ensure the element becomes visible"
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//span[contains(text(), 'INFRASTRUCTURE')]",
+      "Value": "",
+      "Description": "Click on Infrastructure menu"
+    },
+    {
+      "Command": "click",
+      "Target": "//tr[.//div[contains(@class, 'ng-scope') and span[text()='${row[0]}']]]//td[contains(text(), '${row[2]}')]",
+      "Value": "",
+      "Description": "Click on span element containing '${row[0]}' from the current row"
+    },
+    {
+      "Command": "click",
+      "Target": "css=div.panel-heading > a.pull-right > i.glyphicon-pencil",
+      "Value": "",
+      "Description": "Click on the pencil icon within the first div"
+    },
+    {
+      "Command": "gotoIf_v2",
+      "Target": "${!statusOK} == false",
+      "Value": "not ok",
+      "Description": "Jump back to start_loop if an error occurs"
+    },
+    {
+      "Command": "type",
+      "Target": "id=Name",
+      "Value": "${row[1]}",
+      "Description": "Type the value from Colonne 2"
+    },
+    {
+      "Command": "pause",
+      "Target": "1000",
+      "Value": "",
+      "Description": "Pause for 1 seconds to ensure the element becomes visible"
+    },
+    {
+      "Command": "storeValue",
+      "Target": "name=inputName",
+      "Value": "Result",
+      "Description": "Pause for 1 seconds to ensure the element becomes visible"
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return (${row[1]} === ${Result}) ? 'ok' : 'not ok';",
+      "Value": "Comparison",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "${row[0]};${Comparison}",
+      "Value": "!csvLine",
+      "Description": "Test de export"
+    },
+    {
+      "Command": "csvSave",
+      "Target": "output.csv",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"view\"]/div/div[3]/form/fieldset/div[26]/div/button[2]",
+      "Value": "",
+      "Description": "Press Enter"
+    },
+    {
+      "Command": "label",
+      "Target": "end",
+      "Value": "end",
+      "Description": ""
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": "End of the forEach loop"
+    },
+    {
+      "Command": "label",
+      "Target": "not ok",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "${row[0]};Infrastructure absente",
+      "Value": "!csvLine",
+      "Description": "Store row ID with an error status"
+    },
+    {
+      "Command": "csvSave",
+      "Target": "output.csv",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "true",
+      "Value": "!statusOK",
+      "Description": "Iterate over each row of the CSV"
+    },
+    {
+      "Command": "gotoLabel",
+      "Target": "end",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "label",
+      "Target": "final",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return (${row[1]} === ${Result}) ? 'ok' : 'not ok';",
+      "Value": "Comparison",
+      "Description": ""
+    }
+  ]
+}
