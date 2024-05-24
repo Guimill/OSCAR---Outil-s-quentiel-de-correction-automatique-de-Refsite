@@ -1,6 +1,6 @@
 {
   "Name": "Refsites_modif",
-  "CreationDate": "2024-4-24",
+  "CreationDate": "2024-5-24",
   "Commands": [
     {
       "Command": "store",
@@ -81,6 +81,24 @@
       "Description": "Click on Infrastructure menu"
     },
     {
+      "Command": "type",
+      "Target": "xpath=//*[@id=\"builtTab_filter\"]/label/input",
+      "Value": "${row[0]}",
+      "Targets": [
+        "xpath=//*[@id=\"builtTab_filter\"]/label/input",
+        "xpath=//input[@type='search']",
+        "xpath=//input",
+        "css=#builtTab_filter > label > input"
+      ],
+      "Description": "Click on span element containing '${row[0]}' from the current row"
+    },
+    {
+      "Command": "pause",
+      "Target": "100",
+      "Value": "",
+      "Description": "Click on span element containing '${row[0]}' from the current row"
+    },
+    {
       "Command": "click",
       "Target": "//tr[.//div[contains(@class, 'ng-scope') and span[text()='${row[0]}']]]//td[contains(text(), '${row[2]}')]",
       "Value": "",
@@ -114,6 +132,14 @@
       "Command": "storeValue",
       "Target": "name=inputName",
       "Value": "Result",
+      "Targets": [
+        "id=Name",
+        "name=inputName",
+        "xpath=//*[@id=\"Name\"]",
+        "xpath=//input[@id='Name']",
+        "xpath=//div[4]/div/input",
+        "css=#Name"
+      ],
       "Description": "Pause for 1 seconds to ensure the element becomes visible"
     },
     {
@@ -138,6 +164,12 @@
       "Command": "click",
       "Target": "xpath=//*[@id=\"view\"]/div/div[3]/form/fieldset/div[26]/div/button[2]",
       "Value": "",
+      "Targets": [
+        "xpath=//*[@id=\"view\"]/div/div[3]/form/fieldset/div[26]/div/button[2]",
+        "xpath=//button[@type='submit']",
+        "xpath=//button[2]",
+        "css=#view > div > div.well.bs-component > form > fieldset > div:nth-child(28) > div > button.btn.btn-primary.ng-binding"
+      ],
       "Description": "Press Enter"
     },
     {
