@@ -94,7 +94,7 @@
     },
     {
       "Command": "pause",
-      "Target": "100",
+      "Target": "250",
       "Value": "",
       "Description": "Click on span element containing '${row[0]}' from the current row"
     },
