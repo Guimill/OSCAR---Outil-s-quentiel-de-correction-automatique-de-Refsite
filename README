@@ -1,21 +1,21 @@
 
-/***************************************************************************
- API
+/***************************************************************************************************
+ OSCAR
 
                               -------------------
         begin                : 10/04/2024
-        copyright            : (C) 2023 by Guillaume Milleret
-        email                : guillaume.milleret@gmail.com
-	     github		          : https://github.com/Guimill
- ***************************************************************************/
+        copyright            : (C) 2023 by Guillaume Milleret & Jasson Mora Mussio
+        email                : guillaume.milleret@gmail.com & j.jmoram18@gmail.com
+	github		     : https://github.com/Guimill
+ ***************************************************************************************************/
 
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
+/***************************************************************************************************
+	 *                                                                         *
+	 *   This program is free software; you can redistribute it and/or modify  *
+	 *   it under the terms of the GNU General Public License as published by  *
+	 *   the Free Software Foundation; either version 2 of the License, or     *
+	 *   (at your option) any later version.                                   *
+	 *                                                                         *
+ ***************************************************************************************************/
 
-Ce logiciel a été produit grace à Selenium IDE et utilise UI.Vision RPA
+	   Ce logiciel a été produit grace à Selenium IDE et utilise UI.Vision RPA
